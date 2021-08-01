@@ -12,7 +12,7 @@ const jwt = require('./middlewares/jwt')
 // 路由
 const index = require('./routes/index')
 const users = require('./routes/users')
-
+const admin = require('./routes/admin')
 // 安装预防，设置必要的 http 头
 app.use(helmet())
 // error handler
@@ -52,6 +52,7 @@ app.use(async (ctx, next) => {
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(admin.routes(), admin.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
